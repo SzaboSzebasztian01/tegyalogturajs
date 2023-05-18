@@ -28,7 +28,22 @@ function startCalc() {
     state.unsuccessfulPercent = getUnsuccessPercent(competitor, state.unsuccessful);
     doc.unsuccessfulInput.value = state.unsuccessful;
     doc.unsuccessfulPercentInput.value = state.unsuccessfulPercent;
+    if(!isGoodInput(state.competitor)) {
+        state.goodInput = false;
+    }
+    if(!isGoodInput(state.reached)) {
+        state.goodInput = false;
+    }
+}
 
+function startOutput() {
+    if(state.goodInput) {
+        doc.surfaceInput.value = state.surface;
+        doc.badinputDiv.style.display = 'none';
+    }else {
+        doc.badinputDiv.style.display = 'block';
+    }
+    
 }
 
 
@@ -39,4 +54,13 @@ function getUnsuccessCount(competitor, reached) {
 function getUnsuccessPercent(competitor, unsuccessful) {
     let res = unsuccessful / competitor * 100;
     return res;
+}
+
+function inputCheck(input) {
+    let inputStr = String(input);
+    if(inputStr.match(/^[0-9.]+$/)) {
+        return true;
+    }else {
+        return false;
+    }
 }

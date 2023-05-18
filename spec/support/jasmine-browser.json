@@ -3,7 +3,7 @@
   "srcFiles": [
     "**/*.js"
   ],
-  "specDir": "spec",
+  "specDir": "test",
   "specFiles": [
     "**/*[sS]pec.js"
   ],
